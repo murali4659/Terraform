@@ -1,0 +1,18 @@
+provider "aws" {} 
+
+terraform {
+  backend "s3" {
+    bucket = "murali-test2"
+    key    = "terrafrom-state/terraform.state"
+    region = "us-east-2"
+  }
+}
+resource "aws_s3_bucket" "b" {
+  bucket = "terra-murali-test-bucket"
+  acl    = "private"
+
+  tags {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+} 
